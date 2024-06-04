@@ -22,6 +22,9 @@ public class User implements UserDetails {
     @Column(name = "id", updatable = false)
     private Long id;
 
+    @Column(name = "nickname", unique = true)
+    private String nickName;
+
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
@@ -29,9 +32,16 @@ public class User implements UserDetails {
     private String password;
 
     @Builder
-    public User(String email, String password, String auth) {
+    public User(String email, String password, String nickName) {
         this.email = email;
         this.password = password;
+        this.nickName = nickName;
+    }
+
+    // 사용자 이름 변경
+    public User update(String nickName) {
+        this.nickName = nickName;
+        return this;
     }
 
     // 권한 반환(사용자가 가지고 있는 권한 목록 반환)

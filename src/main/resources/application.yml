@@ -11,6 +11,7 @@ spring:
   h2:
     console:
       enabled: true
-jwt:
-  issuer: hany0147@naver.com
-  secret_key: study-springboot
+  config:
+    import: application-secret.yml
+
+
